@@ -1,16 +1,18 @@
-import { useState } from 'react'
 import { Search, Phone, Heart, ChevronDown } from 'lucide-react'
+import { useNavigate } from 'react-router-dom'
 import navbarLogo from '../assets/images/navbar-logo.svg'
 
 const navItems = [
-  { label: 'New Car', hasDropdown: true },
-  { label: 'Old Car', hasDropdown: true },
-  { label: 'Sell car', hasDropdown: false },
-  { label: 'Blog', hasDropdown: false },
-  { label: 'About Us', hasDropdown: false },
+  { label: 'New Car', hasDropdown: true, path: '/new-cars' },
+  { label: 'Old Car', hasDropdown: true, path: '/used-cars' },
+  { label: 'Sell car', hasDropdown: false, path: null },
+  { label: 'Blog', hasDropdown: false, path: null },
+  { label: 'About Us', hasDropdown: false, path: null },
 ]
 
 export default function Navbar() {
+  const navigate = useNavigate()
+
   return (
     <nav className="sticky top-0 z-50 bg-white border-b border-[#F0F0F0]">
       <div className="max-w-[1440px] mx-auto px-7 py-3">
@@ -18,13 +20,19 @@ export default function Navbar() {
           {/* Left: Logo + Nav */}
           <div className="flex items-center gap-5">
             {/* Logo icon only */}
-            <img src={navbarLogo} alt="Happy Cars" className="w-10 h-10" />
+            <img
+              src={navbarLogo}
+              alt="Happy Cars"
+              className="w-10 h-10 cursor-pointer"
+              onClick={() => navigate('/')}
+            />
 
             {/* Nav items in bordered container */}
             <div className="hidden md:flex items-center border border-[#E8E8E8] rounded-full px-2 py-1">
               {navItems.map((item) => (
                 <button
                   key={item.label}
+                  onClick={() => item.path && navigate(item.path)}
                   className="flex items-center gap-1 px-5 py-2 text-sm font-medium text-[#3D3D3D] hover:text-[#141414] transition-colors"
                 >
                   {item.label}
