@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Search } from 'lucide-react'
 import heroBg from '../assets/images/homepage/hero-bg.png'
-import tickIcon from '../assets/images/tick-icon.svg'
+
 
 const trustBadges = ['No obligation', 'Transparent fees', '30-day exchange policy']
 
@@ -9,16 +9,31 @@ export default function Hero() {
   const [aiSearch, setAiSearch] = useState(false)
 
   return (
-    <section className="relative bg-white">
-      {/* City skyline watermark at bottom - full width stretched */}
-      <div className="absolute bottom-[80px] left-0 right-0 h-[320px] opacity-[0.12]">
+    <section className="relative bg-white overflow-hidden">
+      {/* City skyline watermark */}
+      <div
+        style={{
+          position: 'absolute',
+          left: 0,
+          right: 0,
+          bottom: '-200px',
+          height: '457px',
+          opacity: 0.12,
+          transform: 'translate(2px, 0px) scale(1.03)',
+          transformOrigin: 'center bottom',
+          zIndex: 1,
+        }}
+      >
         <img src={heroBg} alt="" className="w-full h-full object-fill" />
       </div>
 
       {/* Main content */}
-      <div className="relative max-w-[1244px] mx-auto px-6 pt-[120px] pb-[100px] flex flex-col items-center text-center">
+      <div
+        className="relative max-w-[1244px] mx-auto px-6 flex flex-col items-center text-center"
+        style={{ paddingTop: '122px', paddingBottom: '100px', zIndex: 2 }}
+      >
         {/* Rating */}
-        <div className="flex items-center gap-2 mb-5">
+        <div className="flex items-center gap-2" style={{ marginBottom: '20px' }}>
           <div className="flex gap-0.5">
             {[...Array(5)].map((_, i) => (
               <svg key={i} width="18" height="18" viewBox="0 0 24 24" fill="#FDBB1A">
@@ -32,22 +47,28 @@ export default function Hero() {
         </div>
 
         {/* Main heading */}
-        <h1 className="text-[52px] font-bold leading-[1.15] text-black max-w-[950px] mb-6">
+        <h1
+          className="font-bold leading-[1.15] text-black max-w-[950px]"
+          style={{ fontSize: '52px', marginBottom: '24px' }}
+        >
           Buy 100% Certified Cars, Backed by 30 Years of Trust Intelligence.
         </h1>
 
         {/* Trust badges */}
-        <div className="flex items-center gap-8 mb-10">
+        <div className="flex items-center gap-8" style={{ marginBottom: '40px' }}>
           {trustBadges.map((badge) => (
             <div key={badge} className="flex items-center gap-2">
-              <img src={tickIcon} alt="" className="w-[18px] h-[18px]" />
+              <span className="w-[10px] h-[10px] rounded-full bg-[#22C55E] inline-block shrink-0" />
               <span className="text-[#141414] font-medium text-[15px]">{badge}</span>
             </div>
           ))}
         </div>
 
         {/* AI Search Bar */}
-        <div className="w-full max-w-[1000px] bg-white/60 backdrop-blur-sm rounded-full shadow-[0px_3px_90px_rgba(68,47,194,0.08),0px_8px_60px_rgba(0,0,0,0.06)] px-7 py-5 flex items-center gap-4">
+        <div
+          className="w-full bg-white/30 backdrop-blur-xl border border-white/40 rounded-full shadow-[0px_8px_32px_rgba(0,0,0,0.08),inset_0px_1px_0px_rgba(255,255,255,0.6)] px-7 py-5 flex items-center gap-4"
+          style={{ maxWidth: '1000px' }}
+        >
           <Search size={22} className="text-[#B0B0B0] shrink-0" />
           <input
             type="text"
@@ -56,7 +77,6 @@ export default function Hero() {
           />
           <div className="flex items-center gap-4 shrink-0">
             <span className="text-[#141414] font-semibold text-base">Search</span>
-            {/* Toggle switch */}
             <button
               onClick={() => setAiSearch(!aiSearch)}
               className={`w-11 h-6 rounded-full relative transition-colors ${aiSearch ? 'bg-[#452CFF]' : 'bg-[#E0E0E0]'}`}
@@ -68,8 +88,8 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* White curved frame at bottom - where skyline ends */}
-      <div className="absolute bottom-0 left-0 right-0 h-[80px] bg-white rounded-t-[40px]" />
+      {/* White curved frame - in normal flow to match layout height */}
+      <div className="relative bg-white rounded-t-[40px]" style={{ height: '106px' }} />
     </section>
   )
 }

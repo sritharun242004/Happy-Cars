@@ -40,11 +40,11 @@ export default function SponsoredAd() {
                 Drive something extraordinary.
               </h3>
               <p className="text-white/60 text-base mb-6 leading-relaxed max-w-[500px]">
-                Discover premium cars handpicked for an exceptional driving experience.
+                Experience the perfect blend of style, power, and certified performance, backed by 30 years of trusted expertise.
               </p>
-              <button className="flex items-center gap-2 text-white font-semibold text-sm hover:opacity-80 transition-opacity">
-                View Deals
-                <ArrowRight size={16} />
+              <button className="flex items-center gap-2 bg-[#D4A843] text-black font-semibold text-sm px-5 py-2.5 rounded-lg hover:bg-[#C49A3A] transition-colors">
+                Explore Featured Cars
+                <span className="text-lg leading-none">›</span>
               </button>
             </div>
           </div>

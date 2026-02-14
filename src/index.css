@@ -15,3 +15,13 @@ body {
 * {
   box-sizing: border-box;
 }
+
+/* Hide default scrollbar */
+::-webkit-scrollbar {
+  width: 0;
+  display: none;
+}
+
+html {
+  scrollbar-width: none;
+}

@@ -12,10 +12,12 @@ import WhyHappyCars from '../components/WhyHappyCars'
 import Testimonials from '../components/Testimonials'
 import FAQ from '../components/FAQ'
 import Footer from '../components/Footer'
+import ScrollCar from '../components/ScrollCar'
 
 export default function Home() {
   return (
     <div className="min-h-screen bg-white">
+      <ScrollCar />
       <Navbar />
       <Hero />
       <SearchBar />
