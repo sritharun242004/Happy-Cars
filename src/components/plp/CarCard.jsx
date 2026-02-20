@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom'
 import { Phone } from 'lucide-react'
 import tickGreen from '../../assets/images/plp/tick-green.svg'
 import routingIcon from '../../assets/images/plp/routing-icon.svg'
@@ -5,8 +6,13 @@ import locationIcon from '../../assets/images/plp/location-icon.svg'
 import heartIcon from '../../assets/images/plp/heart-icon.svg'
 
 export default function CarCard({ car }) {
+  const navigate = useNavigate()
+
   return (
-    <div className="bg-white rounded-xl overflow-hidden border border-[#EEEEEE] shadow-[0px_2px_12px_rgba(0,0,0,0.04)]">
+    <div
+      className="bg-white rounded-xl overflow-hidden border border-[#EEEEEE] shadow-[0px_2px_12px_rgba(0,0,0,0.04)] cursor-pointer hover:shadow-lg transition-shadow"
+      onClick={() => navigate(`/used-cars/${car.id}`)}
+    >
       {/* Top section - white bg */}
       <div className="px-4 pt-4 pb-0">
         {/* Badges row + Heart button */}
