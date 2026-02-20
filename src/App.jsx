@@ -6,6 +6,7 @@ import CarGenie from './pages/CarGenie'
 import Favorites from './pages/Favorites'
 import Blogs from './pages/Blogs'
 import BlogDetail from './pages/BlogDetail'
+import NewsDetail from './pages/NewsDetail'
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/favorites" element={<Favorites />} />
         <Route path="/blogs" element={<Blogs />} />
         <Route path="/blogs/:slug" element={<BlogDetail />} />
+        <Route path="/news/:slug" element={<NewsDetail />} />
       </Routes>
     </Router>
   )

@@ -215,6 +215,7 @@ function BlogsTabContent({ activePage, setActivePage }) {
 
 // ─── News Tab ─────────────────────────────────────────────────
 function NewsTabContent({ activePage, setActivePage }) {
+  const navigate = useNavigate()
   const newsRow1 = newsPosts.slice(0, 2)
   const newsRow2 = newsPosts.slice(2, 4)
   const newsRow3 = newsPosts.slice(4, 6)
@@ -225,7 +226,10 @@ function NewsTabContent({ activePage, setActivePage }) {
         {/* Left: Hero + Card Rows */}
         <div className="flex flex-col gap-8 flex-1" style={{ maxWidth: 898 }}>
           {/* Hero News Card */}
-          <div className="relative w-full h-[602px] rounded-xl overflow-hidden">
+          <div
+            className="relative w-full h-[602px] rounded-xl overflow-hidden cursor-pointer hover:shadow-lg transition-shadow"
+            onClick={() => navigate('/news/drive-smarter-with-expert-insights')}
+          >
             <img src={newsHero} alt="Featured news" className="absolute inset-0 w-full h-full object-cover" />
             <div
               className="absolute bottom-0 left-0 right-0 h-[280px] rounded-b-xl"
