@@ -29,6 +29,15 @@ import reviewCar3 from '../assets/images/reviews/review-car-3.png'
 import reviewCar4 from '../assets/images/reviews/review-car-4.png'
 import playButton from '../assets/images/reviews/play-button.svg'
 
+import videoCar1 from '../assets/images/video/video-car-1.png'
+import videoCar2 from '../assets/images/video/video-car-2.png'
+import videoCar3 from '../assets/images/video/video-car-3.png'
+import videoCar4 from '../assets/images/video/video-car-4.png'
+import videoCar5 from '../assets/images/video/video-car-5.png'
+import videoCar6 from '../assets/images/video/video-car-6.png'
+import videoCar7 from '../assets/images/video/video-car-7.png'
+import videoCar8 from '../assets/images/video/video-car-8.png'
+
 const categories = ['Blogs', 'News', 'Reviews', 'Compare Reviews', 'Photo', 'Video']
 
 const blogPosts = [
@@ -200,56 +209,56 @@ const videoPosts = [
     title: 'Mahindra XUV 7XO Petrol Automatic First Drive Review',
     description: 'Along with the new name comes a series of meaningful updates, ...',
     date: 'Aug 15 2025',
-    image: reviewCar1,
+    image: videoCar1,
   },
   {
     id: 2,
     title: 'Mahindra XUV 7XO Petrol Automatic First Drive Review',
     description: 'Along with the new name comes a series of meaningful updates, ...',
     date: 'Aug 15 2025',
-    image: reviewCar2,
+    image: videoCar2,
   },
   {
     id: 3,
     title: 'Mahindra XUV 7XO Petrol Automatic First Drive Review',
     description: 'Along with the new name comes a series of meaningful updates, ...',
     date: 'Aug 15 2025',
-    image: reviewCar3,
+    image: videoCar3,
   },
   {
     id: 4,
     title: 'Mahindra XUV 7XO Petrol Automatic First Drive Review',
     description: 'Along with the new name comes a series of meaningful updates, ...',
     date: 'Aug 15 2025',
-    image: reviewCar4,
+    image: videoCar4,
   },
   {
     id: 5,
     title: 'Mahindra XUV 7XO Petrol Automatic First Drive Review',
     description: 'Along with the new name comes a series of meaningful updates, ...',
     date: 'Aug 15 2025',
-    image: reviewCar1,
+    image: videoCar5,
   },
   {
     id: 6,
     title: 'Mahindra XUV 7XO Petrol Automatic First Drive Review',
     description: 'Along with the new name comes a series of meaningful updates, ...',
     date: 'Aug 15 2025',
-    image: reviewCar2,
+    image: videoCar6,
   },
   {
     id: 7,
     title: 'Mahindra XUV 7XO Petrol Automatic First Drive Review',
     description: 'Along with the new name comes a series of meaningful updates, ...',
     date: 'Aug 15 2025',
-    image: reviewCar3,
+    image: videoCar7,
   },
   {
     id: 8,
     title: 'Mahindra XUV 7XO Petrol Automatic First Drive Review',
     description: 'Along with the new name comes a series of meaningful updates, ...',
     date: 'Aug 15 2025',
-    image: reviewCar4,
+    image: videoCar8,
   },
 ]
 
@@ -642,11 +651,11 @@ function VideoTabContent({ activePage, setActivePage }) {
 
   return (
     <div className="mt-10 px-[42px]">
-      <div className="flex gap-5">
+      <div className="flex" style={{ gap: 19 }}>
         {/* Left: Video Cards */}
-        <div className="flex flex-col gap-8" style={{ width: 898 }}>
+        <div className="flex flex-col" style={{ width: 898, gap: 32 }}>
           {[row1, row2, row3, row4].map((row, i) => (
-            <div key={i} className="flex items-center gap-4">
+            <div key={i} className="flex items-center" style={{ gap: 16 }}>
               {row.map((post) => (
                 <VideoCard key={post.id} post={post} />
               ))}
@@ -657,7 +666,7 @@ function VideoTabContent({ activePage, setActivePage }) {
         </div>
 
         {/* Right: Sidebar */}
-        <div className="flex flex-col gap-5 shrink-0" style={{ width: 439 }}>
+        <div className="flex flex-col shrink-0" style={{ width: 439, gap: 20 }}>
           <SponsoredCard />
           <TrendingCarsCard />
           <TrendingNewsCard />
@@ -671,71 +680,96 @@ function VideoTabContent({ activePage, setActivePage }) {
 function VideoCard({ post }) {
   return (
     <div
-      className="bg-white overflow-hidden flex flex-col cursor-pointer hover:shadow-lg transition-shadow"
+      className="bg-white overflow-hidden cursor-pointer hover:shadow-lg transition-shadow relative"
       style={{
         width: 441,
         height: 400,
         borderRadius: 16,
-        boxShadow: '0px 8px 24.5px rgba(0,0,0,0.1)',
+        boxShadow: '0px 8.16px 24.47px rgba(0,0,0,0.1)',
       }}
     >
-      <div className="flex flex-col items-center gap-4 px-[23px] pt-6">
-        {/* Car Image with Play Button */}
-        <div className="relative w-full">
-          <img
-            src={post.image}
-            alt={post.title}
-            className="w-full rounded-md object-cover"
-            style={{ height: 178 }}
-          />
-          <img
-            src={playButton}
-            alt="Play"
-            className="absolute"
-            style={{ bottom: 12, right: 16, width: 30, height: 30 }}
-          />
+      {/* Inner frame - absolute positioned content */}
+      <div
+        className="absolute"
+        style={{ left: 22.77, top: 20.61, width: 396, height: 358.77 }}
+      >
+        {/* Car Image */}
+        <img
+          src={post.image}
+          alt={post.title}
+          className="w-full object-cover"
+          style={{ height: 178.42, borderRadius: 6 }}
+        />
+
+        {/* Play Button - positioned at bottom-right of image */}
+        <div
+          className="absolute flex items-center justify-center"
+          style={{
+            left: 359.23,
+            top: 163.39,
+            width: 30,
+            height: 30,
+            borderRadius: '50%',
+            backgroundColor: '#FFFFFF',
+            boxShadow: '0px 1px 2px rgba(0,0,0,0.1), 0px 3px 3px rgba(0,0,0,0.09), 0px 7px 4px rgba(0,0,0,0.05), 0px 13px 5px rgba(0,0,0,0.01)',
+          }}
+        >
+          <svg width="11" height="12" viewBox="0 0 11 12" fill="none">
+            <path
+              d="M0.800781 1.82388V9.40006C0.800781 10.9518 2.48698 11.9256 3.83291 11.1497L7.11831 9.25764L10.4037 7.35764C11.7496 6.58181 11.7496 4.64222 10.4037 3.86639L7.11831 1.96639L3.83291 0.0743423C2.48698 -0.701449 0.800781 0.264343 0.800781 1.82388Z"
+              fill="#FF1D2C"
+            />
+          </svg>
         </div>
 
         {/* Text Content */}
-        <div className="flex flex-col gap-[7px] w-full">
-          <h3
-            className="font-sans font-semibold text-black line-clamp-2"
-            style={{ fontSize: 18, lineHeight: '1.67em' }}
-          >
-            {post.title}
-          </h3>
-          <p
-            className="font-sans font-medium text-[#555555] line-clamp-2"
-            style={{ fontSize: 14, lineHeight: '1.29em' }}
-          >
-            {post.description}
-          </p>
+        <div
+          className="absolute flex flex-col"
+          style={{ left: 0, top: 194.42, width: 396, gap: 18.35 }}
+        >
+          <div className="flex flex-col" style={{ gap: 7 }}>
+            <h3
+              className="font-sans font-semibold text-black line-clamp-2"
+              style={{ fontSize: 18.35, lineHeight: '1.667em' }}
+            >
+              {post.title}
+            </h3>
+            <p
+              className="font-sans font-medium text-[#555555] line-clamp-2"
+              style={{ fontSize: 14.27, lineHeight: '1.286em' }}
+            >
+              {post.description}
+            </p>
+          </div>
         </div>
 
         {/* Divider */}
-        <div className="w-full h-px bg-[#BCBCBC]" />
+        <div
+          className="absolute bg-[#BCBCBC]"
+          style={{ left: 3.13, top: 316.42, width: 389.74, height: 1 }}
+        />
 
         {/* Footer: Youtube badge + date */}
-        <div className="flex items-center gap-2 w-full">
+        <div
+          className="absolute flex items-center"
+          style={{ left: 0, top: 332.42, width: 396, height: 26.35, gap: 8 }}
+        >
           <span
-            className="flex items-center justify-center font-sans font-semibold text-white"
+            className="flex items-center justify-center font-sans font-semibold text-white shrink-0"
             style={{
               fontSize: 12,
-              lineHeight: '1.31em',
+              lineHeight: '1.53em',
               backgroundColor: '#FF1A1A',
               borderRadius: 4,
-              paddingLeft: 10,
-              paddingRight: 10,
-              paddingTop: 5,
-              paddingBottom: 5,
+              width: 69,
+              height: 26.35,
             }}
           >
             Youtube
           </span>
-          <div className="w-px bg-[#8F8F8F]" style={{ height: 19 }} />
           <span
-            className="font-sans font-medium text-[14px] text-[#555555]"
-            style={{ lineHeight: '1.31em' }}
+            className="font-sans font-medium text-[#555555] ml-auto"
+            style={{ fontSize: 14, lineHeight: '1.31em' }}
           >
             {post.date}
           </span>
