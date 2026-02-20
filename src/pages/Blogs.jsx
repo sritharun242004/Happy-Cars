@@ -198,7 +198,7 @@ export default function Blogs() {
   const [activePage, setActivePage] = useState(1)
 
   return (
-    <div className={`min-h-screen flex flex-col ${activeTab === 'News' || activeTab === 'Reviews' ? 'bg-[#FCFCFC]' : 'bg-white'}`}>
+    <div className={`min-h-screen flex flex-col ${activeTab === 'News' || activeTab === 'Reviews' || activeTab === 'Compare Reviews' ? 'bg-[#FCFCFC]' : 'bg-white'}`}>
       <Navbar />
 
       <main className="max-w-[1440px] w-full mx-auto pt-10 pb-16 flex-1">
@@ -244,7 +244,7 @@ export default function Blogs() {
         {/* Tab Content */}
         {activeTab === 'News' ? (
           <NewsTabContent activePage={activePage} setActivePage={setActivePage} />
-        ) : activeTab === 'Reviews' ? (
+        ) : activeTab === 'Reviews' || activeTab === 'Compare Reviews' ? (
           <ReviewsTabContent activePage={activePage} setActivePage={setActivePage} />
         ) : (
           <BlogsTabContent activePage={activePage} setActivePage={setActivePage} />
