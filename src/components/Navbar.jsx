@@ -6,7 +6,7 @@ const navItems = [
   { label: 'New Car', hasDropdown: true, path: '/new-cars' },
   { label: 'Old Car', hasDropdown: true, path: '/used-cars' },
   { label: 'Sell car', hasDropdown: false, path: null },
-  { label: 'Blog', hasDropdown: false, path: null },
+  { label: 'Blog', hasDropdown: false, path: '/blogs' },
   { label: 'About Us', hasDropdown: false, path: null },
 ]
 
@@ -39,8 +39,11 @@ export default function Navbar() {
                   {item.hasDropdown && <ChevronDown size={14} className="text-[#7A7A7A]" />}
                 </button>
               ))}
-              {/* Heart icon */}
-              <button className="px-4 py-2 text-[#7A7A7A] hover:text-[#141414] transition-colors">
+              {/* Heart icon - Favorites */}
+              <button
+                onClick={() => navigate('/favorites')}
+                className="px-4 py-2 text-[#7A7A7A] hover:text-[#141414] transition-colors"
+              >
                 <Heart size={18} />
               </button>
             </div>
