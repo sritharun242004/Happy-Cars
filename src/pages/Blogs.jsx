@@ -27,6 +27,7 @@ import reviewCar1 from '../assets/images/reviews/review-car-1.png'
 import reviewCar2 from '../assets/images/reviews/review-car-2.png'
 import reviewCar3 from '../assets/images/reviews/review-car-3.png'
 import reviewCar4 from '../assets/images/reviews/review-car-4.png'
+import playButton from '../assets/images/reviews/play-button.svg'
 
 const categories = ['Blogs', 'News', 'Reviews', 'Compare Reviews', 'Photo', 'Video']
 
@@ -193,12 +194,71 @@ const reviewPosts = [
   },
 ]
 
+const videoPosts = [
+  {
+    id: 1,
+    title: 'Mahindra XUV 7XO Petrol Automatic First Drive Review',
+    description: 'Along with the new name comes a series of meaningful updates, ...',
+    date: 'Aug 15 2025',
+    image: reviewCar1,
+  },
+  {
+    id: 2,
+    title: 'Mahindra XUV 7XO Petrol Automatic First Drive Review',
+    description: 'Along with the new name comes a series of meaningful updates, ...',
+    date: 'Aug 15 2025',
+    image: reviewCar2,
+  },
+  {
+    id: 3,
+    title: 'Mahindra XUV 7XO Petrol Automatic First Drive Review',
+    description: 'Along with the new name comes a series of meaningful updates, ...',
+    date: 'Aug 15 2025',
+    image: reviewCar3,
+  },
+  {
+    id: 4,
+    title: 'Mahindra XUV 7XO Petrol Automatic First Drive Review',
+    description: 'Along with the new name comes a series of meaningful updates, ...',
+    date: 'Aug 15 2025',
+    image: reviewCar4,
+  },
+  {
+    id: 5,
+    title: 'Mahindra XUV 7XO Petrol Automatic First Drive Review',
+    description: 'Along with the new name comes a series of meaningful updates, ...',
+    date: 'Aug 15 2025',
+    image: reviewCar1,
+  },
+  {
+    id: 6,
+    title: 'Mahindra XUV 7XO Petrol Automatic First Drive Review',
+    description: 'Along with the new name comes a series of meaningful updates, ...',
+    date: 'Aug 15 2025',
+    image: reviewCar2,
+  },
+  {
+    id: 7,
+    title: 'Mahindra XUV 7XO Petrol Automatic First Drive Review',
+    description: 'Along with the new name comes a series of meaningful updates, ...',
+    date: 'Aug 15 2025',
+    image: reviewCar3,
+  },
+  {
+    id: 8,
+    title: 'Mahindra XUV 7XO Petrol Automatic First Drive Review',
+    description: 'Along with the new name comes a series of meaningful updates, ...',
+    date: 'Aug 15 2025',
+    image: reviewCar4,
+  },
+]
+
 export default function Blogs() {
   const [activeTab, setActiveTab] = useState('Blogs')
   const [activePage, setActivePage] = useState(1)
 
   return (
-    <div className={`min-h-screen flex flex-col ${activeTab === 'News' || activeTab === 'Reviews' || activeTab === 'Compare Reviews' ? 'bg-[#FCFCFC]' : 'bg-white'}`}>
+    <div className={`min-h-screen flex flex-col ${activeTab === 'News' || activeTab === 'Reviews' || activeTab === 'Compare Reviews' || activeTab === 'Video' ? 'bg-[#FCFCFC]' : 'bg-white'}`}>
       <Navbar />
 
       <main className="max-w-[1440px] w-full mx-auto pt-10 pb-16 flex-1">
@@ -246,6 +306,8 @@ export default function Blogs() {
           <NewsTabContent activePage={activePage} setActivePage={setActivePage} />
         ) : activeTab === 'Reviews' || activeTab === 'Compare Reviews' ? (
           <ReviewsTabContent activePage={activePage} setActivePage={setActivePage} />
+        ) : activeTab === 'Video' ? (
+          <VideoTabContent activePage={activePage} setActivePage={setActivePage} />
         ) : (
           <BlogsTabContent activePage={activePage} setActivePage={setActivePage} />
         )}
@@ -565,6 +627,118 @@ function ReviewCard({ post }) {
               <path d="M6.68 3.06L12 9l-5.32 5.94" stroke="#292D32" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
             </svg>
           </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+// ─── Video Tab ──────────────────────────────────────────────
+function VideoTabContent({ activePage, setActivePage }) {
+  const row1 = videoPosts.slice(0, 2)
+  const row2 = videoPosts.slice(2, 4)
+  const row3 = videoPosts.slice(4, 6)
+  const row4 = videoPosts.slice(6, 8)
+
+  return (
+    <div className="mt-10 px-[42px]">
+      <div className="flex gap-5">
+        {/* Left: Video Cards */}
+        <div className="flex flex-col gap-8" style={{ width: 898 }}>
+          {[row1, row2, row3, row4].map((row, i) => (
+            <div key={i} className="flex items-center gap-4">
+              {row.map((post) => (
+                <VideoCard key={post.id} post={post} />
+              ))}
+            </div>
+          ))}
+
+          <Pagination activePage={activePage} setActivePage={setActivePage} />
+        </div>
+
+        {/* Right: Sidebar */}
+        <div className="flex flex-col gap-5 shrink-0" style={{ width: 439 }}>
+          <SponsoredCard />
+          <TrendingCarsCard />
+          <TrendingNewsCard />
+        </div>
+      </div>
+    </div>
+  )
+}
+
+// ─── Video Card ──────────────────────────────────────────────
+function VideoCard({ post }) {
+  return (
+    <div
+      className="bg-white overflow-hidden flex flex-col cursor-pointer hover:shadow-lg transition-shadow"
+      style={{
+        width: 441,
+        height: 400,
+        borderRadius: 16,
+        boxShadow: '0px 8px 24.5px rgba(0,0,0,0.1)',
+      }}
+    >
+      <div className="flex flex-col items-center gap-4 px-[23px] pt-6">
+        {/* Car Image with Play Button */}
+        <div className="relative w-full">
+          <img
+            src={post.image}
+            alt={post.title}
+            className="w-full rounded-md object-cover"
+            style={{ height: 178 }}
+          />
+          <img
+            src={playButton}
+            alt="Play"
+            className="absolute"
+            style={{ bottom: 12, right: 16, width: 30, height: 30 }}
+          />
+        </div>
+
+        {/* Text Content */}
+        <div className="flex flex-col gap-[7px] w-full">
+          <h3
+            className="font-sans font-semibold text-black line-clamp-2"
+            style={{ fontSize: 18, lineHeight: '1.67em' }}
+          >
+            {post.title}
+          </h3>
+          <p
+            className="font-sans font-medium text-[#555555] line-clamp-2"
+            style={{ fontSize: 14, lineHeight: '1.29em' }}
+          >
+            {post.description}
+          </p>
+        </div>
+
+        {/* Divider */}
+        <div className="w-full h-px bg-[#BCBCBC]" />
+
+        {/* Footer: Youtube badge + date */}
+        <div className="flex items-center gap-2 w-full">
+          <span
+            className="flex items-center justify-center font-sans font-semibold text-white"
+            style={{
+              fontSize: 12,
+              lineHeight: '1.31em',
+              backgroundColor: '#FF1A1A',
+              borderRadius: 4,
+              paddingLeft: 10,
+              paddingRight: 10,
+              paddingTop: 5,
+              paddingBottom: 5,
+            }}
+          >
+            Youtube
+          </span>
+          <div className="w-px bg-[#8F8F8F]" style={{ height: 19 }} />
+          <span
+            className="font-sans font-medium text-[14px] text-[#555555]"
+            style={{ lineHeight: '1.31em' }}
+          >
+            {post.date}
+          </span>
         </div>
       </div>
     </div>
