@@ -154,12 +154,12 @@ export default function NewCars() {
       <Navbar />
 
       {/* Main content area */}
-      <div className="max-w-[1440px] mx-auto px-10 pt-6">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-10 pt-6">
         {/* Search Bar */}
         <NewCarSearchBar />
 
         {/* Results count */}
-        <div className="flex items-center gap-1.5 mt-[14px] mb-8">
+        <div className="flex items-center gap-1.5 mt-[14px] mb-6 sm:mb-8">
           <img src={locationIcon} alt="" className="w-4 h-4" />
           <p className="text-[14px] text-[#838383] font-display">
             Showing <span className="font-medium">48</span> certified cars in <span className="font-medium">Chennai</span>
@@ -175,20 +175,20 @@ export default function NewCars() {
           <div className="flex-1 min-w-0">
             {/* Filters heading + Sort */}
             <div className="flex items-center justify-between mb-4">
-              <h2 className="text-[32px] font-semibold font-display text-[#1F1F1F] leading-[1.2]">Filters</h2>
+              <h2 className="text-[24px] sm:text-[28px] lg:text-[32px] font-semibold font-display text-[#1F1F1F] leading-[1.2]">Filters</h2>
               <div className="flex items-center bg-white border border-[#E6E6E6] rounded-[5px] px-3 py-2">
-                <span className="text-[15px] font-medium text-[#6E6E6E]" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                <span className="text-sm sm:text-[15px] font-medium text-[#6E6E6E]" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                   Sort by:{' '}
                 </span>
-                <button className="flex items-center gap-1 text-[15px] font-semibold text-[#494949] capitalize" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                <button className="flex items-center gap-1 text-sm sm:text-[15px] font-semibold text-[#494949] capitalize" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                   Price
                   <ChevronDown size={16} className="text-[#6E6E6E]" />
                 </button>
               </div>
             </div>
 
-            {/* Car cards grid - 3 columns */}
-            <div className="grid grid-cols-3 gap-3">
+            {/* Car cards grid - responsive columns */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
               {carData.map((car) => (
                 <NewCarCard key={car.id} car={car} />
               ))}

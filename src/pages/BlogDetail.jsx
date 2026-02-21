@@ -73,9 +73,9 @@ export default function BlogDetail() {
     <div className="bg-white min-h-screen flex flex-col">
       <Navbar />
 
-      <main className="max-w-[1440px] w-full mx-auto pt-8 pb-16 flex-1">
+      <main className="max-w-[1440px] w-full mx-auto pt-6 sm:pt-8 pb-10 sm:pb-16 flex-1">
         {/* Breadcrumb */}
-        <div className="flex items-center gap-1 px-[42px] mb-8">
+        <div className="flex items-center gap-1 px-4 sm:px-6 lg:px-[42px] mb-6 sm:mb-8 flex-wrap">
           <button
             onClick={() => navigate('/')}
             className="font-sans font-medium text-[16px] text-[#373737] hover:underline"
@@ -98,8 +98,8 @@ export default function BlogDetail() {
         {/* Article Content */}
         <article className="flex flex-col gap-[42px]">
           {/* Title + Intro */}
-          <div className="flex flex-col gap-2 px-[44px]">
-            <h1 className="font-display font-semibold text-[36px] leading-[1.2em] text-[#1F1F1F]">
+          <div className="flex flex-col gap-2 px-4 sm:px-6 lg:px-[44px]">
+            <h1 className="font-display font-semibold text-[24px] sm:text-[30px] lg:text-[36px] leading-[1.2em] text-[#1F1F1F]">
               6 Best Electric Cars You Can Buy Under Rs 15 Lakh
             </h1>
             <p
@@ -118,13 +118,13 @@ export default function BlogDetail() {
             <img
               src={articleHero}
               alt="Electric cars under 15 lakh"
-              className="w-[1352px] rounded-xl object-cover"
+              className="w-full max-w-[1352px] rounded-xl object-cover px-4 sm:px-6 lg:px-0"
               style={{ maxHeight: 500 }}
             />
           </div>
 
           {/* Sub-heading + text */}
-          <div className="flex flex-col gap-2 px-[44px]">
+          <div className="flex flex-col gap-2 px-4 sm:px-6 lg:px-[44px]">
             <p
               className="font-display font-medium text-[18px] text-[#1C1C1C]"
               style={{ lineHeight: '2em', letterSpacing: '0.02em' }}
@@ -146,7 +146,7 @@ export default function BlogDetail() {
           </div>
 
           {/* Divider */}
-          <div className="mx-[44px]">
+          <div className="mx-4 sm:mx-6 lg:mx-[44px]">
             <div className="w-full h-px bg-[#C3C3C3]" />
           </div>
 
@@ -157,7 +157,7 @@ export default function BlogDetail() {
         </article>
 
         {/* Previous / Next Navigation */}
-        <div className="flex items-center justify-between px-[44px] mt-16">
+        <div className="flex items-center justify-between px-4 sm:px-6 lg:px-[44px] mt-10 sm:mt-16">
           <button className="flex items-center gap-2.5">
             <span className="w-9 h-9 rounded-full bg-[#E2E2E2] flex items-center justify-center">
               <ArrowLeft size={18} className="text-[#292D32]" />
@@ -197,15 +197,15 @@ function CarSection({ car, showSponsored }) {
         <img
           src={car.image}
           alt={car.name}
-          className="w-[1352px] rounded-xl object-cover"
+          className="w-full max-w-[1352px] rounded-xl object-cover px-4 sm:px-6 lg:px-0"
           style={{ maxHeight: 500 }}
         />
       </div>
 
       {/* Sponsored ad (only on first car section) */}
       {showSponsored && (
-        <div className="flex justify-center">
-          <div className="w-[1032px] h-[121px] bg-[#D9D9D9] rounded-xl relative">
+        <div className="flex justify-center px-4 sm:px-6 lg:px-0">
+          <div className="w-full max-w-[1032px] h-[100px] sm:h-[121px] bg-[#D9D9D9] rounded-xl relative">
             <div className="absolute top-5 left-5 flex items-center gap-1">
               <span className="text-[12px] font-normal text-[#2F2F2F] leading-[2em]">
                 Sponsored
@@ -218,19 +218,19 @@ function CarSection({ car, showSponsored }) {
       )}
 
       {/* Car content */}
-      <div className="flex flex-col gap-6 px-[44px]">
+      <div className="flex flex-col gap-6 px-4 sm:px-6 lg:px-[44px]">
         {/* Car name */}
         <div className="flex flex-col gap-3">
-          <h2 className="font-sans font-semibold text-[32px] leading-[1.2em] text-[#1F1F1F]">
+          <h2 className="font-sans font-semibold text-[24px] sm:text-[28px] lg:text-[32px] leading-[1.2em] text-[#1F1F1F]">
             {car.number}. {car.name}
           </h2>
 
           {/* Specs row */}
-          <div className="flex items-center gap-[18px]">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-[18px]">
             {car.specs.map((spec, i) => (
-              <div key={spec.label} className="flex items-center gap-[18px]">
+              <div key={spec.label} className="flex items-center gap-2 sm:gap-[18px]">
                 <span
-                  className="font-sans font-medium text-[18px] text-[#414141]"
+                  className="font-sans font-medium text-sm sm:text-base lg:text-[18px] text-[#414141]"
                   style={{ lineHeight: '2em', letterSpacing: '0.02em' }}
                 >
                   {spec.label}: {spec.value}

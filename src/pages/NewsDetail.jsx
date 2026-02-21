@@ -90,9 +90,9 @@ export default function NewsDetail() {
     <div className="min-h-screen flex flex-col bg-[#FCFCFC]">
       <Navbar />
 
-      <main className="max-w-[1440px] w-full mx-auto pt-4 pb-16 flex-1">
+      <main className="max-w-[1440px] w-full mx-auto pt-4 pb-10 sm:pb-16 flex-1">
         {/* Breadcrumb */}
-        <div className="flex items-center gap-[1px] px-[42px] mb-[42px]">
+        <div className="flex items-center gap-[1px] px-4 sm:px-6 lg:px-[42px] mb-6 sm:mb-[42px] flex-wrap">
           <button
             onClick={() => navigate('/')}
             className="font-sans font-medium text-[16px] text-[#373737] hover:underline"
@@ -122,11 +122,11 @@ export default function NewsDetail() {
         </div>
 
         {/* Two-column layout */}
-        <div className="flex gap-5 px-0">
+        <div className="flex flex-col lg:flex-row gap-5 px-4 sm:px-6 lg:px-0">
           {/* Left: Article Content */}
-          <div className="flex flex-col gap-8 ml-[42px]" style={{ width: 898 }}>
+          <div className="flex flex-col gap-8 lg:ml-[42px] flex-1 min-w-0">
             {/* Hero Image with Tags */}
-            <div className="relative w-full rounded-xl overflow-hidden" style={{ height: 602 }}>
+            <div className="relative w-full rounded-xl overflow-hidden" style={{ height: 'clamp(300px, 50vw, 602px)' }}>
               <img
                 src={newsHero}
                 alt="Hyundai vs Toyota"
@@ -166,7 +166,7 @@ export default function NewsDetail() {
             {/* Title + Description */}
             <div className="flex flex-col gap-2">
               <h1
-                className="font-sans font-semibold text-[36px] text-[#1F1F1F]"
+                className="font-sans font-semibold text-[24px] sm:text-[30px] lg:text-[36px] text-[#1F1F1F]"
                 style={{ lineHeight: '1.56em' }}
               >
                 Hyundai vs Toyota: Which Used Car Gives Better Long-Term Value?
@@ -215,9 +215,9 @@ export default function NewsDetail() {
           </div>
 
           {/* Right: Sidebar */}
-          <div className="flex flex-col gap-5 shrink-0" style={{ width: 439 }}>
+          <div className="flex flex-col gap-5 w-full lg:w-[439px] lg:shrink-0">
             {/* Sponsored Ad */}
-            <div className="relative w-[439px] h-[357px] rounded-xl overflow-hidden">
+            <div className="relative w-full h-[280px] sm:h-[357px] rounded-xl overflow-hidden">
               <img src={blogSponsored} alt="Sponsored" className="absolute inset-0 w-full h-full object-cover" />
               <div
                 className="absolute top-0 left-0 right-0 rounded-b-xl"
@@ -385,14 +385,14 @@ function CarSection({ car, isFirst, isLast }) {
       {/* Car name */}
       <div className="flex flex-col gap-3">
         <h2
-          className="font-sans font-semibold text-[32px] text-[#1F1F1F]"
+          className="font-sans font-semibold text-[24px] sm:text-[28px] lg:text-[32px] text-[#1F1F1F]"
           style={{ lineHeight: '1.2em' }}
         >
           {car.number}. {car.name}
         </h2>
 
         {/* Specs row */}
-        <div className="flex items-center gap-[18px]">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-[18px]">
           {car.specs.map((spec, i) => (
             <div key={spec.label} className="flex items-center gap-[18px]">
               <span

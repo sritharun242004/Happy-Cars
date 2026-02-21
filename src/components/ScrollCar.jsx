@@ -30,7 +30,7 @@ export default function ScrollCar() {
 
   return (
     <div
-      className="fixed right-3 z-[9999] pointer-events-none"
+      className="fixed right-1 sm:right-3 z-[9999] pointer-events-none"
       style={{
         top: `${topPos}px`,
         opacity: visible ? 1 : 0,
@@ -40,7 +40,7 @@ export default function ScrollCar() {
       <img
         src={scrollCarImg}
         alt=""
-        className="w-12 h-12 drop-shadow-lg"
+        className="w-8 h-8 sm:w-12 sm:h-12 drop-shadow-lg"
         style={{ filter: 'drop-shadow(0 2px 8px rgba(0,0,0,0.2))' }}
       />
     </div>

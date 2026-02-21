@@ -68,19 +68,19 @@ export default function Favorites() {
       <Navbar />
 
       {/* Content */}
-      <main className="max-w-[1357px] w-full mx-auto px-10 pt-8 pb-20 flex-1">
+      <main className="max-w-[1357px] w-full mx-auto px-4 sm:px-6 lg:px-10 pt-6 sm:pt-8 pb-12 sm:pb-20 flex-1">
         {/* Title row */}
         <div className="flex items-center justify-between mb-6">
-          <h1 className="font-display font-semibold text-[32px] text-[#1F1F1F] leading-[1.2em]">
+          <h1 className="font-display font-semibold text-[24px] sm:text-[28px] lg:text-[32px] text-[#1F1F1F] leading-[1.2em]">
             Favorite car
           </h1>
 
           {/* Sort dropdown */}
-          <button className="flex items-center gap-2 border border-[#E6E6E6] rounded-[5px] px-4 h-10">
-            <span className="text-[15px] font-medium text-[#6E6E6E]" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+          <button className="flex items-center gap-2 border border-[#E6E6E6] rounded-[5px] px-3 sm:px-4 h-10">
+            <span className="text-sm sm:text-[15px] font-medium text-[#6E6E6E]" style={{ fontFamily: 'Montserrat, sans-serif' }}>
               Sort by:
             </span>
-            <span className="text-[15px] font-semibold text-[#494949] capitalize" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+            <span className="text-sm sm:text-[15px] font-semibold text-[#494949] capitalize" style={{ fontFamily: 'Montserrat, sans-serif' }}>
               Price
             </span>
             <ChevronDown size={16} className="text-[#494949]" />
@@ -89,7 +89,7 @@ export default function Favorites() {
 
         {/* Cards grid */}
         {favorites.length > 0 ? (
-          <div className="flex flex-wrap gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {favorites.map((car) => (
               <FavoriteCarCard
                 key={car.id}

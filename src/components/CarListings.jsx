@@ -53,15 +53,15 @@ const carData = [
 
 function CarCard({ car }) {
   return (
-    <div className="bg-white rounded-2xl overflow-hidden flex-1 min-w-0 border border-[#EBEBEB] shadow-[0px_4px_24px_rgba(0,0,0,0.06)]">
+    <div className="bg-white rounded-xl sm:rounded-2xl overflow-hidden border border-[#EBEBEB] shadow-[0px_4px_24px_rgba(0,0,0,0.06)]">
       {/* Image */}
-      <div className="relative bg-white px-5 pt-4 pb-0">
+      <div className="relative bg-white px-4 sm:px-5 pt-3 sm:pt-4 pb-0">
         {/* Badges */}
-        <div className="flex gap-2 mb-3">
+        <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-2 sm:mb-3">
           {car.badges.map((badge) => (
             <span
               key={badge}
-              className="text-[#3D3D3D] text-[11px] font-medium flex items-center gap-1"
+              className="text-[#3D3D3D] text-[10px] sm:text-[11px] font-medium flex items-center gap-1"
             >
               <svg width="12" height="9" viewBox="0 0 12 9" fill="none">
                 <path d="M1 4.5L4.5 8L11 1" stroke="#3D3D3D" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
@@ -72,7 +72,7 @@ function CarCard({ car }) {
         </div>
 
         <div className="relative">
-          <img src={car.image} alt={car.title} className="w-full h-[180px] object-contain" />
+          <img src={car.image} alt={car.title} className="w-full h-[150px] sm:h-[180px] object-contain" />
           {/* Heart */}
           <button className="absolute top-0 right-0 p-1.5 bg-white/80 backdrop-blur-sm rounded-full hover:bg-white transition-colors">
             <Heart size={16} className="text-gray-400" />
@@ -81,7 +81,7 @@ function CarCard({ car }) {
       </div>
 
       {/* Content */}
-      <div className="px-5 pt-4 pb-5">
+      <div className="px-4 sm:px-5 pt-3 sm:pt-4 pb-4 sm:pb-5">
         {/* Brand & Title */}
         <p className="text-xs font-semibold text-[#2E7D32] mb-0.5">{car.brand}</p>
         <h3 className="text-[15px] font-bold text-[#141414] leading-tight">{car.title}</h3>
@@ -143,27 +143,27 @@ function CarCard({ car }) {
 
 export default function CarListings() {
   return (
-    <section className="bg-gradient-to-b from-white to-[#F5F5F7] py-16">
-      <div className="max-w-[1440px] mx-auto px-[61px]">
+    <section className="bg-gradient-to-b from-white to-[#F5F5F7] py-8 sm:py-16">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-[61px]">
         {/* Section Header */}
-        <div className="text-center mb-3">
-          <h2 className="text-[36px] font-bold text-black leading-[1.22]">
+        <div className="text-center mb-2 sm:mb-3">
+          <h2 className="text-[20px] sm:text-[30px] lg:text-[36px] font-bold text-black leading-[1.25]">
             Verified Pre-Owned Cars You Can Trust
           </h2>
-          <p className="text-[22px] text-[#494949] font-medium mt-2.5 max-w-[1001px] mx-auto leading-[1.55]">
+          <p className="text-sm sm:text-lg lg:text-[22px] text-[#494949] font-medium mt-1.5 sm:mt-2.5 max-w-[1001px] mx-auto leading-[1.5] sm:leading-[1.55] px-2 sm:px-0">
             Every vehicle is inspected, history-checked, and priced for real value.
           </p>
         </div>
 
         {/* Car Cards */}
-        <div className="flex gap-[25px] mt-[34px] justify-center">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 mt-5 sm:mt-[34px]">
           {carData.map((car) => (
             <CarCard key={car.id} car={car} />
           ))}
         </div>
 
         {/* Navigation arrows */}
-        <div className="flex justify-center gap-3 mt-10">
+        <div className="flex justify-center gap-3 mt-8 sm:mt-10">
           <button className="w-[42px] h-[42px] rounded-full bg-[rgba(237,237,237,0.2)] flex items-center justify-center shadow-[1px_1px_2px_rgba(199,199,199,0.1),2px_3px_4px_rgba(199,199,199,0.09),5px_8px_5px_rgba(199,199,199,0.05)]">
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
               <path d="M10.06 2.72L5.94 8l4.12 5.28" stroke="#292D32" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>

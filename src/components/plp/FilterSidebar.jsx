@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import { ChevronDown } from 'lucide-react'
+import { useState, useEffect } from 'react'
+import { ChevronDown, SlidersHorizontal, X } from 'lucide-react'
 import verifiedShield from '../../assets/images/plp/verified-shield.svg'
 import dealerShield from '../../assets/images/plp/dealer-shield.svg'
 import sellerShield from '../../assets/images/plp/seller-shield.svg'
@@ -126,13 +126,23 @@ export default function FilterSidebar() {
     Object.fromEntries(filterSections.map((s) => [s.id, true]))
   )
   const [budgetRange, setBudgetRange] = useState([139, 166899])
+  const [mobileOpen, setMobileOpen] = useState(false)
+
+  useEffect(() => {
+    if (mobileOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = ''
+    }
+    return () => { document.body.style.overflow = '' }
+  }, [mobileOpen])
 
   const toggleSection = (id) => {
     setOpenSections((prev) => ({ ...prev, [id]: !prev[id] }))
   }
 
-  return (
-    <div className="w-[300px] shrink-0">
+  const filterContent = (
+    <>
       {/* Certification filter - top card */}
       <div className="bg-white rounded-xl border border-[#EEEEEE] mb-4 overflow-hidden">
         <div className="px-5 py-4">
@@ -196,6 +206,42 @@ export default function FilterSidebar() {
           />
         ))}
       </div>
-    </div>
+    </>
+  )
+
+  return (
+    <>
+      {/* Mobile filter toggle button */}
+      <button
+        onClick={() => setMobileOpen(true)}
+        className="lg:hidden flex items-center gap-2 bg-white border border-[#E8E8E8] rounded-lg px-4 py-2.5 text-sm font-medium text-[#3D3D3D] mb-4"
+      >
+        <SlidersHorizontal size={16} />
+        Filters
+      </button>
+
+      {/* Mobile overlay */}
+      {mobileOpen && (
+        <div className="fixed inset-0 z-50 lg:hidden">
+          <div className="absolute inset-0 bg-black/40" onClick={() => setMobileOpen(false)} />
+          <div className="absolute left-0 top-0 bottom-0 w-[300px] max-w-[85vw] bg-[#F6F6F6] overflow-y-auto">
+            <div className="sticky top-0 bg-white z-10 px-5 py-4 border-b border-[#EEEEEE] flex items-center justify-between">
+              <h3 className="text-base font-semibold text-[#141414]">Filters</h3>
+              <button onClick={() => setMobileOpen(false)}>
+                <X size={20} className="text-[#6E6E6E]" />
+              </button>
+            </div>
+            <div className="p-4">
+              {filterContent}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Desktop sidebar */}
+      <div className="hidden lg:block w-[300px] shrink-0">
+        {filterContent}
+      </div>
+    </>
   )
 }

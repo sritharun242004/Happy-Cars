@@ -6,7 +6,7 @@ import whatsappIcon from '../../assets/images/plp/call-dealer-icon.svg'
 
 export default function FavoriteCarCard({ car, onRemoveFavorite }) {
   return (
-    <div className="bg-white rounded-[13px] overflow-hidden border border-[#EEEEEE] shadow-[0px_2px_12px_rgba(0,0,0,0.04)] w-[337px] relative">
+    <div className="bg-white rounded-[13px] overflow-hidden border border-[#EEEEEE] shadow-[0px_2px_12px_rgba(0,0,0,0.04)] w-full relative">
       {/* Heart button (filled red = favorited) */}
       <button
         onClick={() => onRemoveFavorite?.(car.id)}
@@ -33,7 +33,7 @@ export default function FavoriteCarCard({ car, onRemoveFavorite }) {
 
         {/* Car image */}
         <div className="flex justify-center py-1">
-          <img src={car.image} alt={car.title} className="w-[267px] h-[118px] object-contain" />
+          <img src={car.image} alt={car.title} className="w-full max-w-[267px] h-[118px] object-contain" />
         </div>
 
         {/* Car info */}

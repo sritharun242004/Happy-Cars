@@ -270,14 +270,14 @@ export default function Blogs() {
     <div className={`min-h-screen flex flex-col ${activeTab === 'News' || activeTab === 'Reviews' || activeTab === 'Compare Reviews' || activeTab === 'Video' ? 'bg-[#FCFCFC]' : 'bg-white'}`}>
       <Navbar />
 
-      <main className="max-w-[1440px] w-full mx-auto pt-10 pb-16 flex-1">
+      <main className="max-w-[1440px] w-full mx-auto pt-6 sm:pt-10 pb-10 sm:pb-16 flex-1">
         {/* Header */}
-        <div className="flex flex-col items-center gap-2 px-10">
-          <h1 className="font-display font-semibold text-[36px] text-[#1F1F1F] leading-[1.2em] text-center">
+        <div className="flex flex-col items-center gap-2 px-4 sm:px-10">
+          <h1 className="font-display font-semibold text-[24px] sm:text-[30px] lg:text-[36px] text-[#1F1F1F] leading-[1.2em] text-center">
             Drive Smarter With Expert Insights
           </h1>
           <p
-            className="font-display font-medium text-[18px] text-[#414141] text-center max-w-[800px]"
+            className="font-display font-medium text-sm sm:text-base lg:text-[18px] text-[#414141] text-center max-w-[800px]"
             style={{ lineHeight: '2em', letterSpacing: '0.02em' }}
           >
             Actionable guides, market trends, ownership tips, and real stories to help you make
@@ -286,9 +286,9 @@ export default function Blogs() {
         </div>
 
         {/* Category Tabs */}
-        <div className="mt-10 px-[42px]">
+        <div className="mt-6 sm:mt-10 px-4 sm:px-[42px] overflow-x-auto">
           <div
-            className="flex items-center gap-3 w-[628px]"
+            className="flex items-center gap-2 sm:gap-3 w-max sm:w-auto"
             style={{
               borderBottom: '1px solid transparent',
               borderImage: 'linear-gradient(112deg, rgba(210,210,210,0) 0%, rgba(108,108,108,1) 100%) 1',
@@ -298,7 +298,7 @@ export default function Blogs() {
               <button
                 key={cat}
                 onClick={() => { setActiveTab(cat); setActivePage(1) }}
-                className={`px-2.5 py-2.5 font-display font-medium text-[16px] leading-[1.2em] transition-colors whitespace-nowrap ${
+                className={`px-2 sm:px-2.5 py-2.5 font-display font-medium text-sm sm:text-[16px] leading-[1.2em] transition-colors whitespace-nowrap ${
                   activeTab === cat
                     ? 'text-[#272727] border-b-[4px] border-[#0B2A6B]'
                     : 'text-[#787878] border-b border-[#D9D9D9]'
@@ -335,19 +335,19 @@ function BlogsTabContent({ activePage, setActivePage }) {
 
   return (
     <>
-      <div className="mt-10 flex flex-col items-center gap-10">
-        <div className="flex justify-center gap-4">
+      <div className="mt-6 sm:mt-10 flex flex-col items-center gap-6 sm:gap-10 px-4 sm:px-[42px]">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 w-full">
           {row1.map((post) => (
             <BlogCard key={post.id} post={post} />
           ))}
           <SponsoredCard />
         </div>
-        <div className="flex justify-center gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 w-full">
           {row2.map((post) => (
             <BlogCard key={post.id} post={post} />
           ))}
         </div>
-        <div className="flex justify-center gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 w-full">
           {row3.map((post) => (
             <BlogCard key={post.id} post={post} />
           ))}
@@ -366,13 +366,13 @@ function NewsTabContent({ activePage, setActivePage }) {
   const newsRow3 = newsPosts.slice(4, 6)
 
   return (
-    <div className="mt-10 px-[42px]">
-      <div className="flex gap-[42px]">
+    <div className="mt-6 sm:mt-10 px-4 sm:px-[42px]">
+      <div className="flex flex-col lg:flex-row gap-6 lg:gap-[42px]">
         {/* Left: Hero + Card Rows */}
-        <div className="flex flex-col gap-8 flex-1" style={{ maxWidth: 898 }}>
+        <div className="flex flex-col gap-6 sm:gap-8 flex-1">
           {/* Hero News Card */}
           <div
-            className="relative w-full h-[602px] rounded-xl overflow-hidden cursor-pointer hover:shadow-lg transition-shadow"
+            className="relative w-full h-[300px] sm:h-[450px] lg:h-[602px] rounded-xl overflow-hidden cursor-pointer hover:shadow-lg transition-shadow"
             onClick={() => navigate('/news/drive-smarter-with-expert-insights')}
           >
             <img src={newsHero} alt="Featured news" className="absolute inset-0 w-full h-full object-cover" />
@@ -401,9 +401,9 @@ function NewsTabContent({ activePage, setActivePage }) {
           </div>
 
           {/* News Card Rows (2 per row) */}
-          <div className="flex flex-col gap-8">
+          <div className="flex flex-col gap-6 sm:gap-8">
             {[newsRow1, newsRow2, newsRow3].map((row, i) => (
-              <div key={i} className="flex gap-4">
+              <div key={i} className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {row.map((post) => (
                   <NewsCard key={post.id} post={post} />
                 ))}
@@ -415,7 +415,7 @@ function NewsTabContent({ activePage, setActivePage }) {
         </div>
 
         {/* Right Sidebar */}
-        <div className="flex flex-col gap-5 shrink-0" style={{ width: 439 }}>
+        <div className="flex flex-col gap-5 w-full lg:w-[439px] lg:shrink-0">
           {/* Sponsored Ad */}
           <SponsoredCard />
 
@@ -434,7 +434,7 @@ function NewsTabContent({ activePage, setActivePage }) {
 function NewsCard({ post }) {
   return (
     <div
-      className="bg-white overflow-hidden flex flex-col flex-1"
+      className="bg-white overflow-hidden flex flex-col"
       style={{ borderRadius: 16.3, boxShadow: '0px 8px 24.5px rgba(0,0,0,0.1)' }}
     >
       <div className="px-[22px] pt-[18px] flex flex-col flex-1">
@@ -544,12 +544,12 @@ function ReviewsTabContent({ activePage, setActivePage }) {
   const row4 = reviewPosts.slice(6, 8)
 
   return (
-    <div className="mt-10 px-[42px]">
-      <div className="flex gap-5">
+    <div className="mt-6 sm:mt-10 px-4 sm:px-[42px]">
+      <div className="flex flex-col lg:flex-row gap-5">
         {/* Left: Review Cards */}
-        <div className="flex flex-col gap-8" style={{ width: 898 }}>
+        <div className="flex flex-col gap-6 sm:gap-8 flex-1">
           {[row1, row2, row3, row4].map((row, i) => (
-            <div key={i} className="flex items-center gap-4">
+            <div key={i} className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {row.map((post) => (
                 <ReviewCard key={post.id} post={post} />
               ))}
@@ -560,7 +560,7 @@ function ReviewsTabContent({ activePage, setActivePage }) {
         </div>
 
         {/* Right: Sidebar */}
-        <div className="flex flex-col gap-5 shrink-0" style={{ width: 439 }}>
+        <div className="flex flex-col gap-5 w-full lg:w-[439px] lg:shrink-0">
           <SponsoredCard />
           <TrendingCarsCard />
           <TrendingNewsCard />
@@ -574,11 +574,8 @@ function ReviewsTabContent({ activePage, setActivePage }) {
 function ReviewCard({ post }) {
   return (
     <div
-      className="bg-white overflow-hidden flex flex-col cursor-pointer hover:shadow-lg transition-shadow"
+      className="bg-white overflow-hidden flex flex-col cursor-pointer hover:shadow-lg transition-shadow rounded-2xl"
       style={{
-        width: 441,
-        height: 400,
-        borderRadius: 16,
         boxShadow: '0px 8px 24.5px rgba(0,0,0,0.1)',
       }}
     >
@@ -650,12 +647,12 @@ function VideoTabContent({ activePage, setActivePage }) {
   const row4 = videoPosts.slice(6, 8)
 
   return (
-    <div className="mt-10 px-[42px]">
-      <div className="flex" style={{ gap: 19 }}>
+    <div className="mt-6 sm:mt-10 px-4 sm:px-[42px]">
+      <div className="flex flex-col lg:flex-row gap-5">
         {/* Left: Video Cards */}
-        <div className="flex flex-col" style={{ width: 898, gap: 32 }}>
+        <div className="flex flex-col flex-1 gap-6 sm:gap-8">
           {[row1, row2, row3, row4].map((row, i) => (
-            <div key={i} className="flex items-center" style={{ gap: 16 }}>
+            <div key={i} className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {row.map((post) => (
                 <VideoCard key={post.id} post={post} />
               ))}
@@ -666,7 +663,7 @@ function VideoTabContent({ activePage, setActivePage }) {
         </div>
 
         {/* Right: Sidebar */}
-        <div className="flex flex-col shrink-0" style={{ width: 439, gap: 20 }}>
+        <div className="flex flex-col w-full lg:w-[439px] lg:shrink-0 gap-5">
           <SponsoredCard />
           <TrendingCarsCard />
           <TrendingNewsCard />
@@ -680,97 +677,47 @@ function VideoTabContent({ activePage, setActivePage }) {
 function VideoCard({ post }) {
   return (
     <div
-      className="bg-white overflow-hidden cursor-pointer hover:shadow-lg transition-shadow relative"
-      style={{
-        width: 441,
-        height: 400,
-        borderRadius: 16,
-        boxShadow: '0px 8.16px 24.47px rgba(0,0,0,0.1)',
-      }}
+      className="bg-white overflow-hidden cursor-pointer hover:shadow-lg transition-shadow rounded-2xl"
+      style={{ boxShadow: '0px 8.16px 24.47px rgba(0,0,0,0.1)' }}
     >
-      {/* Inner frame - absolute positioned content */}
-      <div
-        className="absolute"
-        style={{ left: 22.77, top: 20.61, width: 396, height: 358.77 }}
-      >
+      <div className="p-4 sm:p-5">
         {/* Car Image */}
-        <img
-          src={post.image}
-          alt={post.title}
-          className="w-full object-cover"
-          style={{ height: 178.42, borderRadius: 6 }}
-        />
-
-        {/* Play Button - positioned at bottom-right of image */}
-        <div
-          className="absolute flex items-center justify-center"
-          style={{
-            left: 359.23,
-            top: 163.39,
-            width: 30,
-            height: 30,
-            borderRadius: '50%',
-            backgroundColor: '#FFFFFF',
-            boxShadow: '0px 1px 2px rgba(0,0,0,0.1), 0px 3px 3px rgba(0,0,0,0.09), 0px 7px 4px rgba(0,0,0,0.05), 0px 13px 5px rgba(0,0,0,0.01)',
-          }}
-        >
-          <svg width="11" height="12" viewBox="0 0 11 12" fill="none">
-            <path
-              d="M0.800781 1.82388V9.40006C0.800781 10.9518 2.48698 11.9256 3.83291 11.1497L7.11831 9.25764L10.4037 7.35764C11.7496 6.58181 11.7496 4.64222 10.4037 3.86639L7.11831 1.96639L3.83291 0.0743423C2.48698 -0.701449 0.800781 0.264343 0.800781 1.82388Z"
-              fill="#FF1D2C"
-            />
-          </svg>
-        </div>
-
-        {/* Text Content */}
-        <div
-          className="absolute flex flex-col"
-          style={{ left: 0, top: 194.42, width: 396, gap: 18.35 }}
-        >
-          <div className="flex flex-col" style={{ gap: 7 }}>
-            <h3
-              className="font-sans font-semibold text-black line-clamp-2"
-              style={{ fontSize: 18.35, lineHeight: '1.667em' }}
-            >
-              {post.title}
-            </h3>
-            <p
-              className="font-sans font-medium text-[#555555] line-clamp-2"
-              style={{ fontSize: 14.27, lineHeight: '1.286em' }}
-            >
-              {post.description}
-            </p>
+        <div className="relative">
+          <img
+            src={post.image}
+            alt={post.title}
+            className="w-full object-cover rounded-md h-[160px] sm:h-[178px]"
+          />
+          {/* Play Button */}
+          <div
+            className="absolute bottom-2 right-2 w-[30px] h-[30px] rounded-full bg-white flex items-center justify-center"
+            style={{ boxShadow: '0px 1px 2px rgba(0,0,0,0.1), 0px 3px 3px rgba(0,0,0,0.09)' }}
+          >
+            <svg width="11" height="12" viewBox="0 0 11 12" fill="none">
+              <path d="M0.800781 1.82388V9.40006C0.800781 10.9518 2.48698 11.9256 3.83291 11.1497L7.11831 9.25764L10.4037 7.35764C11.7496 6.58181 11.7496 4.64222 10.4037 3.86639L7.11831 1.96639L3.83291 0.0743423C2.48698 -0.701449 0.800781 0.264343 0.800781 1.82388Z" fill="#FF1D2C"/>
+            </svg>
           </div>
         </div>
 
+        {/* Text Content */}
+        <div className="mt-4 flex flex-col gap-2">
+          <h3 className="font-sans font-semibold text-black line-clamp-2 text-base sm:text-lg leading-[1.667em]">
+            {post.title}
+          </h3>
+          <p className="font-sans font-medium text-[#555555] line-clamp-2 text-sm leading-[1.286em]">
+            {post.description}
+          </p>
+        </div>
+
         {/* Divider */}
-        <div
-          className="absolute bg-[#BCBCBC]"
-          style={{ left: 3.13, top: 316.42, width: 389.74, height: 1 }}
-        />
+        <div className="w-full h-px bg-[#BCBCBC] my-3" />
 
         {/* Footer: Youtube badge + date */}
-        <div
-          className="absolute flex items-center"
-          style={{ left: 0, top: 332.42, width: 396, height: 26.35, gap: 8 }}
-        >
-          <span
-            className="flex items-center justify-center font-sans font-semibold text-white shrink-0"
-            style={{
-              fontSize: 12,
-              lineHeight: '1.53em',
-              backgroundColor: '#FF1A1A',
-              borderRadius: 4,
-              width: 69,
-              height: 26.35,
-            }}
-          >
+        <div className="flex items-center gap-2">
+          <span className="flex items-center justify-center font-sans font-semibold text-white shrink-0 text-xs px-3 py-1 bg-[#FF1A1A] rounded">
             Youtube
           </span>
-          <span
-            className="font-sans font-medium text-[#555555] ml-auto"
-            style={{ fontSize: 14, lineHeight: '1.31em' }}
-          >
+          <span className="font-sans font-medium text-[#555555] ml-auto text-sm">
             {post.date}
           </span>
         </div>
@@ -806,7 +753,7 @@ function BlogCard({ post }) {
   return (
     <div
       onClick={() => navigate(`/blogs/${post.slug || post.id}`)}
-      className="bg-white rounded-2xl overflow-hidden w-[441px] h-[426px] flex flex-col cursor-pointer hover:shadow-lg transition-shadow"
+      className="bg-white rounded-2xl overflow-hidden flex flex-col cursor-pointer hover:shadow-lg transition-shadow"
       style={{ boxShadow: '0px 8px 24.5px rgba(0,0,0,0.1)' }}
     >
       <div className="px-[22px] pt-[18px] flex flex-col flex-1">
@@ -829,7 +776,7 @@ function BlogCard({ post }) {
 
 function SponsoredCard() {
   return (
-    <div className="relative w-[439px] h-[357px] rounded-xl overflow-hidden self-start shrink-0">
+    <div className="relative w-full h-[280px] sm:h-[357px] rounded-xl overflow-hidden self-start shrink-0">
       <img src={blogSponsored} alt="Sponsored" className="absolute inset-0 w-full h-full object-cover" />
       <div
         className="absolute top-0 left-0 right-0 h-[123px] rounded-b-xl"

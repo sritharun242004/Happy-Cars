@@ -35,19 +35,19 @@ export default function Steps() {
   }, [])
 
   return (
-    <section className="bg-[#FEFEFE] py-[71px]">
-      <div className="max-w-[1440px] mx-auto px-[120px]">
+    <section className="bg-[#FEFEFE] py-8 sm:py-16 lg:py-[71px]">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-[120px]">
         {/* Section Header */}
-        <div className="text-center mb-12">
-          <h2 className="text-[32px] font-bold text-black leading-[1.22]">
+        <div className="text-center mb-5 sm:mb-12">
+          <h2 className="text-[20px] sm:text-[28px] lg:text-[32px] font-bold text-black leading-[1.25]">
             Buy in 3 Simple Steps
           </h2>
         </div>
 
         {/* Steps layout */}
-        <div className="flex items-start gap-16">
+        <div className="flex flex-col md:flex-row items-start gap-5 sm:gap-8 md:gap-12 lg:gap-16">
           {/* Left - Auto-cycling image */}
-          <div className="w-[458px] h-[487px] rounded-2xl shrink-0 overflow-hidden relative">
+          <div className="w-full md:w-[380px] lg:w-[458px] h-[220px] sm:h-[380px] lg:h-[487px] rounded-xl sm:rounded-2xl shrink-0 overflow-hidden relative">
             {steps.map((step, index) => (
               <img
                 key={index}
@@ -61,21 +61,21 @@ export default function Steps() {
           </div>
 
           {/* Right - Step cards */}
-          <div className="flex-1 flex flex-col gap-[30px] pt-0">
+          <div className="flex-1 flex flex-col gap-3 sm:gap-[30px] pt-0 w-full">
             {steps.map((step, index) => (
               <button
                 key={step.number}
                 onClick={() => setActiveIndex(index)}
-                className={`flex flex-col gap-1.5 p-5 rounded-[10px] text-left transition-colors duration-300 ${
+                className={`flex flex-col gap-1 sm:gap-1.5 p-3.5 sm:p-5 rounded-lg sm:rounded-[10px] text-left transition-colors duration-300 ${
                   activeIndex === index
                     ? 'bg-[#452CFF] text-white'
-                    : 'bg-white text-[#141414]'
+                    : 'bg-white text-[#141414] border border-[#F0F0F0] sm:border-0'
                 }`}
               >
-                <h3 className={`text-base font-bold ${activeIndex === index ? 'text-white' : 'text-[#141414]'}`}>
+                <h3 className={`text-[14px] sm:text-base font-bold ${activeIndex === index ? 'text-white' : 'text-[#141414]'}`}>
                   {step.number}. {step.title}
                 </h3>
-                <p className={`text-sm leading-relaxed ${activeIndex === index ? 'text-white/80' : 'text-[#555555]'}`}>
+                <p className={`text-[13px] sm:text-sm leading-relaxed ${activeIndex === index ? 'text-white/80' : 'text-[#555555]'}`}>
                   {step.description}
                 </p>
               </button>

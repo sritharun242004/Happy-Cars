@@ -28,29 +28,29 @@ const reasons = [
 
 export default function WhyPreOwned() {
   return (
-    <section className="bg-[#FBFBFB] py-[86px]">
-      <div className="max-w-[1292px] mx-auto px-6">
-        <div className="text-center mb-8">
-          <h2 className="text-[32px] font-bold text-black leading-[1.22]">Why Buy a Pre-Owned Car?</h2>
-          <p className="text-[#494949] text-lg mt-3 max-w-[700px] mx-auto leading-[1.89]">
+    <section className="bg-[#FBFBFB] py-8 sm:py-16 lg:py-[86px]">
+      <div className="max-w-[1292px] mx-auto px-4 sm:px-6">
+        <div className="text-center mb-6 sm:mb-8">
+          <h2 className="text-[20px] sm:text-[28px] lg:text-[32px] font-bold text-black leading-[1.25]">Why Buy a Pre-Owned Car?</h2>
+          <p className="text-[#494949] text-sm sm:text-lg mt-2 sm:mt-3 max-w-[700px] mx-auto leading-[1.6] sm:leading-[1.89]">
             Smarter value, lower depreciation, and verified quality—without compromise.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-8 mt-4 sm:mt-8">
           {reasons.map((reason) => (
             <div
               key={reason.title}
-              className="bg-white rounded-2xl p-7 shadow-[0px_4px_20px_rgba(171,171,171,0.08)] hover:shadow-[0px_8px_30px_rgba(171,171,171,0.12)] transition-shadow"
+              className="bg-white rounded-xl sm:rounded-2xl p-5 sm:p-7 shadow-[0px_4px_20px_rgba(171,171,171,0.08)] hover:shadow-[0px_8px_30px_rgba(171,171,171,0.12)] transition-shadow"
             >
               <div
-                className="w-12 h-12 rounded-xl flex items-center justify-center mb-5"
+                className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl flex items-center justify-center mb-3 sm:mb-5"
                 style={{ backgroundColor: reason.bgColor }}
               >
-                <img src={reason.icon} alt="" className="w-6 h-6" />
+                <img src={reason.icon} alt="" className="w-5 h-5 sm:w-6 sm:h-6" />
               </div>
-              <h3 className="text-lg font-bold text-[#141414] mb-2">{reason.title}</h3>
-              <p className="text-sm text-[#555555] leading-relaxed">{reason.description}</p>
+              <h3 className="text-base sm:text-lg font-bold text-[#141414] mb-1.5 sm:mb-2">{reason.title}</h3>
+              <p className="text-[13px] sm:text-sm text-[#555555] leading-relaxed">{reason.description}</p>
             </div>
           ))}
         </div>

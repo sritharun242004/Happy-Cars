@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Search, Pencil, MessageSquare, Plus } from 'lucide-react'
+import { Search, Pencil, MessageSquare, Plus, Menu, X } from 'lucide-react'
 import citySkyline from '../assets/images/chatbot/city-skyline-b11219.png'
 import carGenieAvatar from '../assets/images/chatbot/car-genie-avatar-899404.png'
 import userAvatar from '../assets/images/chatbot/user-avatar.png'
@@ -117,6 +117,8 @@ export default function CarGenie() {
     setQuery('')
   }
 
+  const [sidebarOpen, setSidebarOpen] = useState(false)
+
   // ─── Landing View (before chat) ────────────────────────────
   if (!chatActive) {
     return (
@@ -145,27 +147,30 @@ export default function CarGenie() {
           style={{ height: 324 }}
         />
 
-        <Sidebar navigate={navigate} onNewConversation={handleNewConversation} />
+        <Sidebar navigate={navigate} onNewConversation={handleNewConversation} mobileOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
 
         {/* Main Content */}
         <main className="relative z-10 flex-1 flex flex-col items-center">
-          <div className="w-full px-5 pt-5">
+          <div className="w-full px-4 sm:px-5 pt-4 sm:pt-5 flex items-center gap-3">
+            <button onClick={() => setSidebarOpen(true)} className="lg:hidden text-[#442FC2]">
+              <Menu size={24} />
+            </button>
             <span className="font-display font-semibold" style={{ fontSize: 16.57, color: '#442FC2' }}>
               CarGenie
             </span>
           </div>
 
-          <div className="flex-1 flex flex-col items-center justify-center gap-8 w-full max-w-[1244px] px-8">
+          <div className="flex-1 flex flex-col items-center justify-center gap-6 sm:gap-8 w-full max-w-[1244px] px-4 sm:px-8">
             <div className="flex flex-col items-center gap-2">
               <h1
-                className="font-sans font-bold text-center text-black leading-[1.36em]"
-                style={{ fontSize: 56, maxWidth: 1021 }}
+                className="font-sans font-bold text-center text-black leading-[1.36em] text-[28px] sm:text-[40px] lg:text-[56px]"
+                style={{ maxWidth: 1021 }}
               >
                 Find Your Perfect Car, the Smart Way
               </h1>
               <p
-                className="mt-2 font-sans font-medium text-center"
-                style={{ fontSize: 16, lineHeight: '1.625em', color: '#141414', maxWidth: 759 }}
+                className="mt-2 font-sans font-medium text-center text-sm sm:text-base"
+                style={{ lineHeight: '1.625em', color: '#141414', maxWidth: 759 }}
               >
                 HappyCars AI makes car searching effortless. Ask anything from model comparisons to
                 EMI calculations and get instant, personalized answers powered by real marketplace data.
@@ -200,19 +205,22 @@ export default function CarGenie() {
         style={{ height: 324 }}
       />
 
-      <Sidebar navigate={navigate} onNewConversation={handleNewConversation} />
+      <Sidebar navigate={navigate} onNewConversation={handleNewConversation} mobileOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
 
       {/* Main Chat Area */}
-      <main className="relative z-10 flex-1 flex flex-col h-full">
+      <main className="relative z-10 flex-1 flex flex-col h-full min-w-0">
         {/* Header */}
-        <div className="w-full px-5 pt-5 shrink-0">
+        <div className="w-full px-4 sm:px-5 pt-4 sm:pt-5 shrink-0 flex items-center gap-3">
+          <button onClick={() => setSidebarOpen(true)} className="lg:hidden text-[#442FC2]">
+            <Menu size={24} />
+          </button>
           <span className="font-display font-semibold" style={{ fontSize: 16.57, color: '#442FC2' }}>
             CarGenie
           </span>
         </div>
 
         {/* Messages */}
-        <div className="flex-1 overflow-y-auto px-14 pt-6 pb-4">
+        <div className="flex-1 overflow-y-auto px-4 sm:px-8 lg:px-14 pt-6 pb-4">
           <div className="max-w-[1100px] mx-auto flex flex-col gap-6">
             {messages.map((msg, i) => (
               <ChatMessage key={i} message={msg} />
@@ -222,7 +230,7 @@ export default function CarGenie() {
         </div>
 
         {/* Bottom: Input + Footer */}
-        <div className="shrink-0 flex flex-col items-center gap-4 px-14 pb-5">
+        <div className="shrink-0 flex flex-col items-center gap-4 px-4 sm:px-8 lg:px-14 pb-5">
           <ChatInputBar
             query={query}
             setQuery={setQuery}
@@ -230,7 +238,7 @@ export default function CarGenie() {
             inputRef={inputRef}
             wide
           />
-          <div className="flex items-center gap-2.5 text-[#373737]" style={{ fontSize: 16 }}>
+          <div className="flex items-center gap-2.5 text-[#373737] text-sm sm:text-base">
             <span className="font-sans font-medium">Terms & Conditions</span>
             <span className="w-1.5 h-1.5 rounded-full bg-[#373737]" />
             <span className="font-sans font-medium">Privacy Policy</span>
@@ -242,16 +250,9 @@ export default function CarGenie() {
 }
 
 // ─── Sidebar ──────────────────────────────────────────────────
-function Sidebar({ navigate, onNewConversation }) {
-  return (
-    <aside
-      className="relative z-10 flex flex-col items-center bg-white h-full shrink-0"
-      style={{
-        width: 82,
-        boxShadow:
-          '37px 37px 114px 0px rgba(133,133,133,0.1), 146px 146px 207px 0px rgba(133,133,133,0.09), 329px 329px 250px 0px rgba(133,133,133,0.05)',
-      }}
-    >
+function Sidebar({ navigate, onNewConversation, mobileOpen, onClose }) {
+  const sidebarContent = (
+    <>
       {/* Logo */}
       <div className="mt-6 mb-8">
         <div
@@ -269,7 +270,7 @@ function Sidebar({ navigate, onNewConversation }) {
           <Search size={18} strokeWidth={1.5} />
         </button>
         <button
-          onClick={onNewConversation}
+          onClick={() => { onNewConversation(); onClose(); }}
           className="w-6 h-6 flex items-center justify-center text-[#7D7D7D] hover:text-[#442FC2] transition-colors"
         >
           <Pencil size={18} strokeWidth={1.5} />
@@ -283,7 +284,36 @@ function Sidebar({ navigate, onNewConversation }) {
       <div className="mt-auto mb-6">
         <UserAvatar size={42} />
       </div>
-    </aside>
+    </>
+  )
+
+  return (
+    <>
+      {/* Desktop sidebar */}
+      <aside
+        className="relative z-10 hidden lg:flex flex-col items-center bg-white h-full shrink-0"
+        style={{
+          width: 82,
+          boxShadow:
+            '37px 37px 114px 0px rgba(133,133,133,0.1), 146px 146px 207px 0px rgba(133,133,133,0.09), 329px 329px 250px 0px rgba(133,133,133,0.05)',
+        }}
+      >
+        {sidebarContent}
+      </aside>
+
+      {/* Mobile sidebar overlay */}
+      {mobileOpen && (
+        <div className="fixed inset-0 z-50 lg:hidden">
+          <div className="absolute inset-0 bg-black/40" onClick={onClose} />
+          <aside className="absolute left-0 top-0 h-full w-20 bg-white flex flex-col items-center shadow-xl">
+            <button onClick={onClose} className="mt-4 mb-2 text-[#7D7D7D]">
+              <X size={20} />
+            </button>
+            {sidebarContent}
+          </aside>
+        </div>
+      )}
+    </>
   )
 }
 
@@ -292,10 +322,11 @@ function ChatInputBar({ query, setQuery, onSubmit, inputRef, wide }) {
   return (
     <form
       onSubmit={onSubmit}
-      className={`flex items-center justify-between rounded-[210px] ${wide ? 'w-full max-w-[1238px]' : 'w-full max-w-[1000px]'}`}
+      className={`flex items-center justify-between rounded-full sm:rounded-[210px] ${wide ? 'w-full max-w-[1238px]' : 'w-full max-w-[1000px]'}`}
       style={{
-        padding: '27px 28px',
-        height: 76,
+        padding: 'clamp(14px, 2vw, 27px) clamp(16px, 2vw, 28px)',
+        height: 'auto',
+        minHeight: 56,
         background: 'rgba(255, 255, 255, 0.16)',
         boxShadow: '8px 10px 89.8px 0px rgba(0,0,0,0.16)',
         backdropFilter: 'blur(20px)',
@@ -335,19 +366,19 @@ function ChatMessage({ message }) {
 
   if (isAI) {
     return (
-      <div className="flex items-start gap-2.5">
+      <div className="flex items-start gap-2 sm:gap-2.5">
         <img
           src={carGenieAvatar}
           alt="CarGenie"
-          className="w-[62px] h-[68px] object-contain shrink-0"
+          className="w-[40px] h-[44px] sm:w-[62px] sm:h-[68px] object-contain shrink-0"
           style={{ filter: 'drop-shadow(0px 3.86px 2.53px rgba(11,11,11,0.25))' }}
         />
         <div
-          className="bg-white rounded-[65px] px-4 py-4 max-w-[863px]"
+          className="bg-white rounded-2xl sm:rounded-[65px] px-3 sm:px-4 py-3 sm:py-4 max-w-[calc(100%-60px)] sm:max-w-[863px]"
         >
           <p
-            className="font-display font-medium text-[#363636]"
-            style={{ fontSize: 18, lineHeight: '1.5em', letterSpacing: '0.036em' }}
+            className="font-display font-medium text-[#363636] text-[15px] sm:text-[18px]"
+            style={{ lineHeight: '1.5em', letterSpacing: '0.036em' }}
           >
             {message.text}
           </p>
@@ -358,16 +389,16 @@ function ChatMessage({ message }) {
 
   // User message — right aligned
   return (
-    <div className="flex items-start justify-end gap-2.5">
+    <div className="flex items-start justify-end gap-2 sm:gap-2.5">
       <div
-        className="rounded-[65px] px-5 py-4 max-w-[600px]"
+        className="rounded-2xl sm:rounded-[65px] px-4 sm:px-5 py-3 sm:py-4 max-w-[calc(100%-50px)] sm:max-w-[600px]"
         style={{
           background: 'linear-gradient(-13deg, rgba(37,19,73,1) 0%, rgba(33,33,130,1) 100%)',
         }}
       >
         <p
-          className="font-display font-medium text-white"
-          style={{ fontSize: 18, lineHeight: '1.5em', letterSpacing: '0.036em' }}
+          className="font-display font-medium text-white text-[15px] sm:text-[18px]"
+          style={{ lineHeight: '1.5em', letterSpacing: '0.036em' }}
         >
           {message.text}
         </p>

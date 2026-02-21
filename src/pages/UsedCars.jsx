@@ -208,10 +208,10 @@ export default function UsedCars() {
     <div className="min-h-screen bg-[#F6F6F6]">
       {/* Step Indicators */}
       <div className="bg-white border-b border-[#EEEEEE]">
-        <div className="max-w-[1440px] mx-auto px-7 py-2.5">
-          <div className="flex items-center justify-center gap-6">
+        <div className="max-w-[1440px] mx-auto px-4 sm:px-7 py-2.5">
+          <div className="flex items-center justify-center gap-3 sm:gap-6 overflow-x-auto">
             {steps.map((step, index) => (
-              <div key={step.number} className="flex items-center gap-2">
+              <div key={step.number} className="flex items-center gap-2 shrink-0">
                 <div
                   className={`w-7 h-7 rounded-full flex items-center justify-center text-[13px] font-semibold ${
                     index === 0
@@ -241,12 +241,12 @@ export default function UsedCars() {
       <Navbar />
 
       {/* Search Bar */}
-      <div className="bg-[#F6F6F6] py-5 px-7">
+      <div className="bg-[#F6F6F6] py-4 sm:py-5 px-4 sm:px-7">
         <PLPSearchBar />
       </div>
 
       {/* Location text */}
-      <div className="max-w-[1440px] mx-auto px-7 pb-4">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-7 pb-4">
         <p className="text-[14px] text-[#6E6E6E] font-display">
           Showing <span className="font-semibold text-[#141414]">48</span> certified cars in{' '}
           <span className="font-semibold text-[#141414]">Chennai</span>
@@ -254,7 +254,7 @@ export default function UsedCars() {
       </div>
 
       {/* Main content: Sidebar + Car Grid */}
-      <div className="max-w-[1440px] mx-auto px-7 pb-10">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-7 pb-10">
         <div className="flex gap-6">
           {/* Left sidebar */}
           <FilterSidebar />
@@ -267,8 +267,8 @@ export default function UsedCars() {
             {/* Sort bar */}
             <SortBar />
 
-            {/* Car cards grid - 3 columns */}
-            <div className="grid grid-cols-3 gap-4">
+            {/* Car cards grid - responsive columns */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {carData.map((car) => (
                 <CarCard key={car.id} car={car} />
               ))}

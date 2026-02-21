@@ -24,7 +24,7 @@ export default function NewCarCard({ car }) {
       {/* Car image */}
       <div className="px-4 pt-4">
         <div className="flex justify-center">
-          <img src={car.image} alt={car.title} className="w-[300px] h-[135px] object-cover rounded" />
+          <img src={car.image} alt={car.title} className="w-full max-w-[300px] h-[135px] object-cover rounded" />
         </div>
       </div>
 

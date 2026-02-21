@@ -26,9 +26,9 @@ export default function Footer() {
       </div>
 
       {/* "Happy Cars" watermark text */}
-      <div className="absolute bottom-[100px] left-[10px] w-[1432px] pointer-events-none select-none">
+      <div className="absolute bottom-[100px] left-[10px] w-full pointer-events-none select-none hidden sm:block">
         <span
-          className="text-[237px] font-bold font-display leading-[1.2] capitalize block"
+          className="text-[80px] sm:text-[140px] lg:text-[237px] font-bold font-display leading-[1.2] capitalize block"
           style={{
             background: 'linear-gradient(180deg, rgba(46,16,66,1) 22%, rgba(12,70,228,1) 100%)',
             WebkitBackgroundClip: 'text',
@@ -40,12 +40,12 @@ export default function Footer() {
         </span>
       </div>
 
-      <div className="relative max-w-[1440px] mx-auto px-[70px]">
+      <div className="relative max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-[70px]">
         {/* Main footer content */}
-        <div className="pt-[62px] pb-8">
-          <div className="flex gap-16">
+        <div className="pt-8 sm:pt-[62px] pb-8">
+          <div className="flex flex-col sm:flex-row flex-wrap lg:flex-nowrap gap-8 sm:gap-10 lg:gap-16">
             {/* Brand */}
-            <div className="max-w-[441px]">
+            <div className="max-w-full sm:max-w-[441px]">
               {/* Logo */}
               <div className="flex items-center gap-2.5 mb-4">
                 <img src={navbarLogo} alt="Happy Cars" className="w-10 h-10" />
@@ -85,13 +85,13 @@ export default function Footer() {
             </div>
 
             {/* Newsletter / Input fields */}
-            <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-4 w-full sm:w-auto">
               <div className="flex flex-col gap-2">
                 <label className="text-sm text-white/60">Email Address</label>
                 <input
                   type="email"
                   placeholder="Enter Your Email Address"
-                  className="bg-white/8 border border-white/15 rounded-lg px-4 py-2.5 text-sm text-white placeholder-white/30 outline-none focus:border-[#FDBB1A]/50 transition-colors w-[276px]"
+                  className="bg-white/8 border border-white/15 rounded-lg px-4 py-2.5 text-sm text-white placeholder-white/30 outline-none focus:border-[#FDBB1A]/50 transition-colors w-full sm:w-[276px]"
                 />
               </div>
               <div className="flex flex-col gap-2">
@@ -99,7 +99,7 @@ export default function Footer() {
                 <input
                   type="text"
                   placeholder="DD/MM/YYYY"
-                  className="bg-white/8 border border-white/15 rounded-lg px-4 py-2.5 text-sm text-white placeholder-white/30 outline-none focus:border-[#FDBB1A]/50 transition-colors w-[142px]"
+                  className="bg-white/8 border border-white/15 rounded-lg px-4 py-2.5 text-sm text-white placeholder-white/30 outline-none focus:border-[#FDBB1A]/50 transition-colors w-full sm:w-[142px]"
                 />
               </div>
             </div>
@@ -113,7 +113,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="border-t border-white/8 py-5 flex items-center justify-between">
+        <div className="border-t border-white/8 py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
           <div className="flex items-center gap-5">
             <a href="#" className="text-white/40 text-sm hover:text-white/70 transition-colors">Terms & Conditions</a>
             <a href="#" className="text-white/40 text-sm hover:text-white/70 transition-colors">Privacy Policy</a>
