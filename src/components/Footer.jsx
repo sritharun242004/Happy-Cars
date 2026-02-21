@@ -84,25 +84,6 @@ export default function Footer() {
               </ul>
             </div>
 
-            {/* Newsletter / Input fields */}
-            <div className="flex flex-col gap-4 w-full sm:w-auto">
-              <div className="flex flex-col gap-2">
-                <label className="text-sm text-white/60">Email Address</label>
-                <input
-                  type="email"
-                  placeholder="Enter Your Email Address"
-                  className="bg-white/8 border border-white/15 rounded-lg px-4 py-2.5 text-sm text-white placeholder-white/30 outline-none focus:border-[#FDBB1A]/50 transition-colors w-full sm:w-[276px]"
-                />
-              </div>
-              <div className="flex flex-col gap-2">
-                <label className="text-sm text-white/60">Date of Birth</label>
-                <input
-                  type="text"
-                  placeholder="DD/MM/YYYY"
-                  className="bg-white/8 border border-white/15 rounded-lg px-4 py-2.5 text-sm text-white placeholder-white/30 outline-none focus:border-[#FDBB1A]/50 transition-colors w-full sm:w-[142px]"
-                />
-              </div>
-            </div>
           </div>
 
           {/* Social media */}

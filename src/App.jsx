@@ -8,6 +8,7 @@ import Blogs from './pages/Blogs'
 import BlogDetail from './pages/BlogDetail'
 import NewsDetail from './pages/NewsDetail'
 import UsedCarDetail from './pages/UsedCarDetail'
+import NewCarDetail from './pages/NewCarDetail'
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/used-cars" element={<UsedCars />} />
         <Route path="/used-cars/:id" element={<UsedCarDetail />} />
         <Route path="/new-cars" element={<NewCars />} />
+        <Route path="/new-cars/:id" element={<NewCarDetail />} />
         <Route path="/car-genie" element={<CarGenie />} />
         <Route path="/favorites" element={<Favorites />} />
         <Route path="/blogs" element={<Blogs />} />

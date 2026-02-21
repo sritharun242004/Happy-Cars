@@ -1,11 +1,16 @@
 import { Star } from 'lucide-react'
+import { useNavigate } from 'react-router-dom'
 import routingIcon from '../../assets/images/plp/routing-icon.svg'
 import locationIcon from '../../assets/images/plp/location-icon.svg'
 import heartIcon from '../../assets/images/plp/heart-icon.svg'
 
 export default function NewCarCard({ car }) {
+  const navigate = useNavigate()
   return (
-    <div className="bg-white rounded-[12px] overflow-hidden shadow-[0px_6px_19px_rgba(0,0,0,0.1)] relative">
+    <div
+      className="bg-white rounded-[12px] overflow-hidden shadow-[0px_6px_19px_rgba(0,0,0,0.1)] relative cursor-pointer"
+      onClick={() => navigate(`/new-cars/${car.id}`)}
+    >
       {/* Badge - top left */}
       {car.badge && (
         <div
